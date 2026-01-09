@@ -16,7 +16,7 @@ describe('Teste de Autenticação - Swag Labs', () => {
   })
 
   // ========== CENÁRIOS DE VALIDAÇÃO DE ERRO ==========
-  it('deve exibir erro ao tentar login com credenciais inválidas - usuário incorreto', () => {
+  it('deve exibir erro ao tentar login com usuário bloqueado', () => {
     cy.get('[data-test="username"]').type('locked_out_user')
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('[data-test="login-button"]').click()
@@ -42,7 +42,7 @@ describe('Teste de Autenticação - Swag Labs', () => {
   // ========== CENÁRIOS DE CAMPOS OBRIGATÓRIOS ==========
 
   it('deve exibir erro quando o campo username estiver vazio', () => {
-    cy.get('[data-test="username"]')
+    //cy.get('[data-test="username"]')
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('[data-test="login-button"]').click()
     cy.get('.error-message-container').should('contain','Epic sadface: Username is required')
@@ -50,14 +50,14 @@ describe('Teste de Autenticação - Swag Labs', () => {
 
   it('deve exibir erro quando o campo password estiver vazio', () => {
     cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]')
+    //cy.get('[data-test="password"]')
     cy.get('[data-test="login-button"]').click()
     cy.get('.error-message-container').should('contain.text','Password is required')
   })
 
   it('deve exibir erro quando ambos os campos estiverem vazios', () => {
-    cy.get('[data-test="username"]')
-    cy.get('[data-test="password"]')
+    //cy.get('[data-test="username"]')
+    //cy.get('[data-test="password"]')
     cy.get('[data-test="login-button"]').click()
     cy.get('.error-message-container').should('contain','Epic sadface: Username is required')
     
@@ -65,9 +65,9 @@ describe('Teste de Autenticação - Swag Labs', () => {
 
   // ========== CENÁRIOS ADICIONAIS DE UX ==========
 
-  it.only('deve permitir limpar mensagem de erro ao clicar no botão X', () => {
+  it('deve permitir limpar mensagem de erro ao clicar no botão X', () => {
     cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]')
+    //cy.get('[data-test="password"]')
     cy.get('[data-test="login-button"]').click()
     cy.get('.error-message-container').should('contain.text','Password is required')
     cy.get('[data-test="error-button"]').click()
