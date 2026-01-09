@@ -99,24 +99,21 @@ describe('Teste de Produtos - Swag Labs', () => {
     cy.get('[data-test="product-sort-container"]').select('Price (low to high)')
     cy.get('[data-test="product-sort-container"]').should('contain','Price (low to high)')
     cy.get(':nth-child(1) > [data-test="inventory-item-description"] > .pricebar').should('contain','$7.99')
+  })
 
-  it.only('deve ordenar produtos por preço (maior para menor)', () => {
+  it('deve ordenar produtos por preço (maior para menor)', () => {
     cy.get('[data-test="product-sort-container"]').should('contain','Name (A to Z)')
     cy.get('[data-test="product-sort-container"]').select('Price (high to low)')
     cy.get('[data-test="product-sort-container"]').should('contain','Price (high to low)')
     cy.get(':nth-child(1) > [data-test="inventory-item-description"] > .pricebar').should('contain','$49.99')
-    // TODO:
-    // 1. Selecionar "Price (high to low)" no dropdown
-    // 2. Capturar preços dos produtos na ordem exibida
-    // 3. Validar que estão em ordem decrescente de preço
   })
 
   // ========== CENÁRIOS DE CARRINHO ==========
 
-  it('deve acessar o carrinho clicando no ícone', () => {s
+  it.only('deve acessar o carrinho clicando no ícone', () => {
 
     // TODO:
-    // 1. Adicionar pelo menos 1 produto
+    // 1. Adicionar pelo menos 1 produt
     // 2. Clicar no ícone do carrinho
     // 3. Validar que foi redirecionado para /cart.html
     // 4. Validar que o produto adicionado está listado
@@ -166,4 +163,4 @@ describe('Teste de Produtos - Swag Labs', () => {
     // 5. Validar que botões "Remove" continuam nos produtos corretos
   })
 
-})})
+})
