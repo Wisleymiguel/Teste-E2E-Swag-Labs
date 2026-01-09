@@ -110,57 +110,49 @@ describe('Teste de Produtos - Swag Labs', () => {
 
   // ========== CENÁRIOS DE CARRINHO ==========
 
-  it.only('deve acessar o carrinho clicando no ícone', () => {
-
-    // TODO:
-    // 1. Adicionar pelo menos 1 produt
-    // 2. Clicar no ícone do carrinho
-    // 3. Validar que foi redirecionado para /cart.html
-    // 4. Validar que o produto adicionado está listado
-  })
 
   it('deve exibir carrinho vazio quando nenhum produto foi adicionado', () => {
-    // TODO:
-    // 1. Clicar no ícone do carrinho sem adicionar produtos
-    // 2. Validar que foi para /cart.html
-    // 3. Validar que não há produtos listados
-    // 4. Validar que badge do carrinho não está visível
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+    cy.get('[data-test="shopping-cart-link"]').click()
+    cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+    cy.get('[data-test="cart-contents-container"]').should('not.contain','Remove')
+    cy.get('[data-test="shopping-cart-link"]').should('not.contain','1')
   })
 
   it('deve remover produto do carrinho pela página do carrinho', () => {
-    // TODO:
-    // 1. Adicionar um produto ao carrinho
-    // 2. Acessar o carrinho
-    // 3. Clicar no botão "Remove" do produto
-    // 4. Validar que produto foi removido da lista
-    // 5. Validar que badge diminuiu ou desapareceu
+    cy.get('[data-test="item-3-title-link"] > [data-test="inventory-item-name"]').click()
+    cy.get('[data-test="add-to-cart"]').click()
+    cy.get('[data-test="shopping-cart-link"]').click()
+    cy.get('[data-test="remove-test.allthethings()-t-shirt-(red)"]').click()
+    cy.get('[data-test="cart-contents-container"]').should('not.contain','Test.allthethings() T-Shirt (Red)')
+    cy.get('[data-test="shopping-cart-link"]').should('not.contain','1')
   })
 
   it('deve continuar comprando a partir do carrinho', () => {
-    // TODO:
-    // 1. Adicionar produto e acessar carrinho
-    // 2. Clicar no botão "Continue Shopping"
-    // 3. Validar que retornou para /inventory.html
-    // 4. Validar que produtos anteriormente adicionados continuam no carrinho (badge)
+    cy.get('[data-test="item-3-title-link"] > [data-test="inventory-item-name"]').click()
+    cy.get('[data-test="add-to-cart"]').click()
+    cy.get('[data-test="shopping-cart-link"]').click()
+    cy.get('[data-test="continue-shopping"]').click()
+    cy.url().should('include', '/inventory.html')
+    cy.get('[data-test="shopping-cart-link"]').should('contain','1')
+    cy.get('[data-test="secondary-header"]').should('contain','Products')
   })
 
   // ========== CENÁRIOS DE VALIDAÇÃO DE INFORMAÇÕES ==========
 
   it('deve exibir informações corretas dos produtos (nome, descrição, preço)', () => {
-    // TODO:
-    // 1. Validar que todos os produtos têm nome visível
-    // 2. Validar que todos os produtos têm descrição visível
-    // 3. Validar que todos os produtos têm preço no formato "$X.XX"
-    // 4. Validar que todos os produtos têm imagem visível
+    cy.get('[data-test="item-2-title-link"] > [data-test="inventory-item-name"]').click()
+    cy.get('.inventory_details_desc_container').should('contain','Sauce Labs Onesie')
+    cy.get('.inventory_details_desc_container').should('contain','Rib snap infant onesie')
+    cy.get('.inventory_details_price').should('contain','$7.99')
   })
 
   it('deve manter estado do carrinho ao navegar entre páginas', () => {
-    // TODO:
-    // 1. Adicionar 2 produtos ao carrinho
-    // 2. Acessar detalhes de um produto
-    // 3. Voltar para lista de produtos
-    // 4. Validar que badge ainda mostra "2"
-    // 5. Validar que botões "Remove" continuam nos produtos corretos
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+    cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
+    cy.get('[data-test="shopping-cart-link"]').click()
+    cy.get('[data-test="continue-shopping"]').click()
+    cy.get('[data-test="shopping-cart-link"]').should('contain','2')
   })
 
 })
