@@ -29,3 +29,20 @@ Cypress.Commands.add('login', (username = 'standard_user', password = 'secret_sa
   cy.get('[data-test="password"]').type(password)
   cy.get('[data-test="login-button"]').click()
 })
+Cypress.Commands.add('goToCheckout', () => {
+  cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+  cy.get('[data-test="shopping-cart-link"]').click()
+  cy.get('[data-test="checkout"]').click()
+})
+Cypress.Commands.add('fillCheckoutInfo', (firstName, lastName, postalCode) => {
+  if (firstName) {
+    cy.get('[data-test="firstName"]').type(firstName)
+  }
+  if (lastName) {
+    cy.get('[data-test="lastName"]').type(lastName)
+  }
+  if (postalCode) {
+    cy.get('[data-test="postalCode"]').type(postalCode)
+  }
+  cy.get('[data-test="continue"]').click()
+})
