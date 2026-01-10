@@ -16,7 +16,8 @@ describe('Teste de Checkout - Swag Labs', () => {
 
   it('deve exibir resumo correto do pedido antes de finalizar', () => {
     cy.fillCheckoutInfo('Ana', 'Silva', '12345')
-    cy.get('[data-test="inventory-item"]').should('contain','Sauce Labs Backpack',).should('contain', '$29.99')
+    cy.get('[data-test="inventory-item"]').should('contain','Sauce Labs Backpack',)
+    .should('contain', '$29.99')
   })
 
   // ========== CENÁRIOS DE VALIDAÇÃO DE CAMPOS ==========
@@ -51,7 +52,6 @@ describe('Teste de Checkout - Swag Labs', () => {
   it('deve cancelar checkout e voltar para carrinho', () => {
     cy.fillCheckoutInfo('João', 'Silva', '12345')
     cy.get('[data-test="cancel"]').click()
-    cy.url().should('not.include', '/cart.html')
     cy.url().should('include', '/inventory.html')
   })
 
@@ -79,7 +79,8 @@ describe('Teste de Checkout - Swag Labs', () => {
     cy.get('[data-test="shopping-cart-link"]').click()
     cy.get('[data-test="checkout"]').click()
     cy.fillCheckoutInfo('João', 'Silva', '12345')
-    cy.get('[data-test="cart-list"]').should('contain','Sauce Labs Backpack').should('contain','Sauce Labs Bike Light')
+    cy.get('[data-test="cart-list"]').should('contain','Sauce Labs Backpack')
+    .should('contain','Sauce Labs Bike Light')
     cy.get('[data-test="finish"]').click()
     cy.get('.complete-header').should('contain','Thank you for your order!')
   })
