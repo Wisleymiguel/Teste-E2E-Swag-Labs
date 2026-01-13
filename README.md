@@ -114,10 +114,10 @@ npx cypress run --browser chrome
 ### Resumo Geral
 | Módulo | Testes | Status |
 |--------|--------|--------|
-| Login | 10/10 | ✅ |
+| Login | 08/08 | ✅ |
 | Produtos | 16/16 | ✅ |
-| Checkout | 13/13 | ✅ |
-| **TOTAL** | **39/39** | **✅** |
+| Checkout | 12/12 | ✅ |
+| **TOTAL** | **36/39** | **✅** |
 
 ### Cobertura de Cenários
 - ✅ Caminhos felizes
