@@ -261,26 +261,11 @@ Os testes geram automaticamente:
 - ✅ Execução em múltiplos eventos
 - ✅ Versionamento de código
 
-## 🚀 Próximas Melhorias
-
-- [ ] Implementar Page Objects pattern
-- [ ] Adicionar testes de API com cy.intercept()
-- [ ] Criar fixtures com massa de dados variada
-- [ ] Integrar Mochawesome para relatórios HTML
-- [ ] Adicionar testes responsive (mobile/tablet)
-- [ ] Implementar testes de performance
-- [ ] Adicionar ESLint para qualidade de código
-- [ ] Configurar Codecov para cobertura de código
-- [ ] Adicionar testes de acessibilidade (cypress-axe)
-- [ ] Criar dashboards de métricas
 
 ## 👤 Autor
 
 **Wisley Miguel do Carmo Camilo**
 
-- 💼 LinkedIn: [Wisley Miguel](https://www.linkedin.com/in/wisley-miguel/)
-- 🐙 GitHub: [@Wisleymiguel](https://github.com/Wisleymiguel)
-- 📧 Email: [Seu email aqui]
 
 ## 📝 Formação
 
